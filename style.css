@@ -1,0 +1,139 @@
+h1 {color: green; font-size: 120%}
+p {color: aqua;}
+img {width:256px;height:256px;}
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 30%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.obvious{
+  border: 10px dotted green;
+  text-align: center;
+  width: 50%; height: auto;
+  padding: 0.5em;
+  margin: 0.5em;
+  float: right;
+}
+body {
+  background-color: rgb(0%,0%,0%);
+  color: white;
+font-family: Helvetica
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.container2 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+}
+#hover {
+  background-color: rgb(100%, 10%, 100%);
+  width: 150%;
+  height: 150%;
+}
+
+#tooltip {
+  display: none;
+  background-color: yellow;
+  padding: 20px;
+  color: black;
+  font-size: 25px;
+  height: 30px;
+  width: auto;
+}
+
+.container2:hover #tooltip {
+  display: block;
+
+}
+
+body {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(myv.jpg);
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-color: black;
+  color: white;
+  padding: 25px;
+  max-width:100%;
+  height:auto;
+
+  font-family: retro
+  /*background-blend-mode: saturation, luminosity;*/
+}
+
+@font-face {
+  font-family: retro;
+  src: url(./squarefont/Square.ttf);
+}
+
+.shadow-center-text {
+  text-shadow: 2px 2px rgba(0,0,0,0.4);
+  text-align:center;
+
+}
+
+/*
+.outline-text{
+  -webkit-text-stroke: 0.4px black;
+}
+*/
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button-container {
+
+  top: 500px;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  margin: 0;
+  left: 49.5%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+
+}
+
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.horizontal-center {
+  margin: 0;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
