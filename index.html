@@ -7,7 +7,6 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding-top: 100px; }
         input[type="password"], input[type="submit"] { font-size: 16px; padding: 10px; margin: 10px; }
-        #message { color: red; }
     </style>
     <!-- Include the CryptoJS library for hashing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
@@ -20,23 +19,16 @@
     </form>
     <p id="message" style="color:red;"></p>
     <script>
-        const url = window.location.href
-        var filename = url.split('/').pop()
-        if (filename == ''){var filename = url.split('/').reverse()[1]}
-    
-        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        const hashedPassword = "ffabc660214d727da7cf5431303e75ef"; // MD5 hash of "password"
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const enteredPassword = document.getElementById('password').value;
             const enteredHashedPassword = CryptoJS.MD5(enteredPassword).toString();
-            try {
-                const response = await fetch(url.replace(filename,enteredHashedPassword+".html"));
-                if (response.ok) {
-                        window.location.href = enteredHashedPassword+".html"; // Redirect to the protected page
-                    } else {
-                        throw new Error('Page not found.');
-                    }
-            } catch(error) {
-                document.getElementById('message').innerText = url.replace(filename,enteredHashedPassword+".html");//"Incorrect password, please try again.";
+            if (enteredHashedPassword === hashedPassword) {
+                window.location.href = "protected.html"; // Redirect to the protected page
+            } else {
+                document.getElementById('message').innerText = "Incorrect password, please try again.";
             }
         });
     </script>
