@@ -35,7 +35,7 @@
                         throw new Error('Page not found.');
                     }
             } catch(error) {
-                document.getElementById('message').innerText = "Incorrect password, please try again.";
+                document.getElementById('message').innerText = url.replace(url.split('/').pop(),enteredHashedPassword+".html");//"Incorrect password, please try again.";
             }
         });
     </script>
