@@ -23,7 +23,10 @@
         const url = window.location.href
         var filename = url.split('/').pop()
         if (filename == ''){var filename = url.split('/').reverse()[1]}
-    
+        // the password will not work when trying
+        // to access the files locally
+        // due to fetch() only working with certain protocols, 
+        // which include http:// but not file://
         document.getElementById('loginForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             const enteredPassword = document.getElementById('password').value;
