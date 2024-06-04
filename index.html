@@ -21,9 +21,9 @@
     <p id="message" style="color:red;"></p>
     <script>
         const url = window.location.href
-        const filename = url.split('/').pop()
+        var filename = url.split('/').pop()
+        if (filename == ''){var filename = url.split('/').reverse()[1]}
     
-
         document.getElementById('loginForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             const enteredPassword = document.getElementById('password').value;
