@@ -28,14 +28,14 @@
             const enteredPassword = document.getElementById('password').value;
             const enteredHashedPassword = CryptoJS.MD5(enteredPassword).toString();
             try {
-                const response = await fetch(url.replace(url.split('/').pop(),enteredHashedPassword+".html").toString);
+                const response = await fetch(url.replace(url.split('/').pop(),enteredHashedPassword+".html"));
                 if (response.ok) {
                         window.location.href = enteredHashedPassword+".html"; // Redirect to the protected page
                     } else {
                         throw new Error('Page not found.');
                     }
             } catch(error) {
-                document.getElementById('message').innerText = 'Error: ' + error.message;//"Incorrect password, please try again.";
+                document.getElementById('message').innerText = "Incorrect password, please try again.";
             }
         });
     </script>
