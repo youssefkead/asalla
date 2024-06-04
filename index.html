@@ -21,21 +21,22 @@
     <p id="message" style="color:red;"></p>
     <script>
         const url = window.location.href
-        const hashedPassword = "ffabc660214d727da7cf5431303e75ef"; // MD5 hash of the password
+        const filename = url.split('/').pop()
+    
 
         document.getElementById('loginForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             const enteredPassword = document.getElementById('password').value;
             const enteredHashedPassword = CryptoJS.MD5(enteredPassword).toString();
             try {
-                const response = await fetch(url.replace(url.split('/').pop(),enteredHashedPassword+".html"));
+                const response = await fetch(url.replace(filename,enteredHashedPassword+".html"));
                 if (response.ok) {
                         window.location.href = enteredHashedPassword+".html"; // Redirect to the protected page
                     } else {
                         throw new Error('Page not found.');
                     }
             } catch(error) {
-                document.getElementById('message').innerText = url.replace(url.split('/').pop(),enteredHashedPassword+".html");//"Incorrect password, please try again.";
+                document.getElementById('message').innerText = url.replace(filename,enteredHashedPassword+".html");//"Incorrect password, please try again.";
             }
         });
     </script>
